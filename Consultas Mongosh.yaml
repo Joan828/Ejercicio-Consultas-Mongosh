@@ -1,0 +1,155 @@
+1.1. Desarrollar el Proyecto
+A continuación, creará su propia base de datos de red social con las siguientes colecciones:
+  use RRSSDB
+users
+  db.createCollection("users")
+
+posts
+  db.createCollection("posts")
+
+
+1.2. Ejecute las siguientes consulta
+
+A continuación tendrás que realizar las siguientes consultas MongoDB:
+
+1.2.1 INSERTAR DATOS
+
+
+Insertar al menos 15 publicaciones nuevas con almenos 2 comentarios por publicación:
+title
+body
+username
+comments
+username
+body
+
+db.posts.insertMany([
+{title: 'Publicación 1', body: 'Cuerpo de la publicación 1', username: 'Joan', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }, 
+{title: 'Publicación 2', body: 'Cuerpo de la publicación 2', username: 'Joan', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 3', body: 'Cuerpo de la publicación 3', username: 'Joan', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 4', body: 'Cuerpo de la publicación 4', username: 'Joan', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 5', body: 'Cuerpo de la publicación 5', username: 'Joan', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }
+])
+
+db.posts.insertMany([
+{title: 'Publicación 6', body: 'Cuerpo de la publicación 6', username: 'Paquito', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }, 
+{title: 'Publicación 7', body: 'Cuerpo de la publicación 7', username: 'Paquito', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }
+])
+
+db.posts.insertMany([
+{title: 'Publicación 8', body: 'Cuerpo de la publicación 8', username: 'Paquito', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 9', body: 'Cuerpo de la publicación 9', username: 'Paquito', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 10', body: 'Cuerpo de la publicación 10', username: 'Paquito', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }
+])
+
+db.posts.insertMany([
+{title: 'Publicación 11', body: 'Cuerpo de la publicación 11', username: 'Alfredo', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }, 
+{title: 'Publicación 12', body: 'Cuerpo de la publicación 12', username: 'Alfredo', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 13', body: 'Cuerpo de la publicación 13', username: 'Alfredo', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 14', body: 'Cuerpo de la publicación 14', username: 'Alfredo', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] },
+{title: 'Publicación 15', body: 'Cuerpo de la publicación 15', username: 'Alfredo', comments: [{ username: 'Juan', body: 'Contenido del comentario de Juan'},{ username: 'Ana', body: 'Contenido del comentario de Ana'}] }
+])
+
+
+Insertar al menos 10 nuevos usuarios:
+username
+email
+age
+
+db.users.insertMany([
+{username: 'Joan', email: 'joan@gmail.com', age: 23 }, 
+{username: 'Paquito', email: 'paquito@gmail.com', age: 25 },
+{username: 'Alfredo', email: 'alfredo@gmail.com', age: 28 },
+{username: 'Juan', email: 'juan@gmail.com', age: 61 }
+])
+
+db.users.insertMany([
+{username: 'Ana', email: 'ana@gmail.com', age: 59 },
+{username: 'Julio', email: 'julio@gmail.com', age: 45 }, 
+{username: 'Paquita', email: 'paquita@gmail.com', age: 48 }
+])
+
+db.users.insertMany([
+{username: 'Alfreda', email: 'alfreda@gmail.com', age: 55 },
+{username: 'Juanita', email: 'juanita@gmail.com', age: 51 },
+{username: 'Anna', email: 'anna@gmail.com', age: 19 }
+])
+
+
+
+1.2.2 ACTUALIZAR  DATOS
+ 
+Actualizar publicaciones:
+Actualiza todos los valores de los campos de una publicación.
+
+  db.posts.updateOne({ title: 'Publicación 1' },
+  { $set:{title: "Publicación 1.1", body: "Cuerpo de la publicación 1.1", username: "Julio", comments: [{ username: 'Anna', body: 'Contenido del comentario de Anna'},{ username: 'Joan', body: 'Contenido del comentario de Joan'}]}})
+
+Cambiar el valor del campo “body” de una publicación.
+
+  db.posts.updateOne({ title: 'Publicación 2' },
+  { $set:{body: "Cuerpo de la publicación 2.1"}})
+
+Actualizar comentarios:
+Actualiza el comentario de una publicación.
+
+  db.posts.updateOne({ title: 'Publicación 2' },
+  { $set:{comments: [{ username: 'Anna', body: 'Contenido del comentario de Anna 2.0'}]}})
+
+Actualizar usuarios:
+Actualiza todos los valores de los campos de un usuario
+
+  db.users.updateOne({ username: 'Alfreda' },
+  { $set:{username: 'Ala', email: 'ala@gmail.com', age: 23 }})
+
+Cambiar el email de dos usuarios, es decir, hacer la query dos veces.
+
+  db.users.updateOne({ username: 'Juanita' },
+  { $set:{email: 'juanitadestroyer@gmail.com'}})
+
+  db.users.updateOne({ username: 'Paquita' },
+  { $set:{email: 'paquitadestroyer@gmail.com'}})
+
+Aumenta en 5 años la edad de un usuario.
+
+db.users.updateOne({ username: 'Paquita' },
+{ $inc:{age: 5}})
+
+1.2.3 OBTENER DATOS
+
+Seleccionar todas las publicaciones.
+
+  db.posts.find()
+
+Selecciona las publicaciones que coincidan con el username indicado.
+
+  db.posts.findMany({ username: 'Joan' })
+
+Seleccione todos los usuarios con una edad mayor a 20.
+
+  db.users.findMany({ age: {$gt:20} })
+
+Seleccione todos los usuarios con una edad inferior a 23.
+
+  db.users.findMany({ age: {$lt:23} })
+
+Seleccione todos los usuarios que tengan una edad entre 25 y 30 años.
+
+  db.users.findMany({ $and:[{age :{$gt:25}},{age:{$lt:30}}]})
+
+Muestra los usuarios de edad menor a mayor y viceversa.
+
+
+
+Seleccione el número total de usuarios.
+Seleccione todas las publicaciones y haz que se muestren con la siguiente estructura: Título de la publicación: "title one".
+Selecciona solo 2 usuarios.
+Busca por title 2 publicaciones.
+
+
+1.2.4 BORRAR DATOS
+
+Elimina a todos los usuarios con una edad mayor a 30.
+
+  db.users.deleteMany({age: {$gt:30}})
+
